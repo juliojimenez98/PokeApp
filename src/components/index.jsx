@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { getAllPokemon, getPokemon } from "../services/pokemon";
+import ButtonPagination from "./ButtonPagination";
 import Card from "./Card/Card";
 
 const Index = () => {
@@ -14,12 +15,33 @@ const Index = () => {
       let response = await getAllPokemon(urlEndPoint);
       setNextUrl(response.next);
       setPrevUrl(response.previous);
-      let pokemon = await loadingPokemon(response.results);
+      await loadingPokemon(response.results);
 
       setLoading(false);
     }
     fetchData();
   }, []);
+
+  const next = async () => {
+    setLoading(true);
+    let data = await getAllPokemon(nextUrl);
+    await loadingPokemon(data.results);
+    setNextUrl(data.next);
+    setPrevUrl(data.previous);
+    setLoading(false);
+  };
+
+  const prev = async () => {
+    if (!prevUrl) {
+      return;
+    }
+    setLoading(true);
+    let data = await getAllPokemon(prevUrl);
+    await loadingPokemon(data.results);
+    setNextUrl(data.next);
+    setPrevUrl(data.previous);
+    setLoading(false);
+  };
 
   const loadingPokemon = async (data) => {
     let _pokemonData = await Promise.all(
@@ -34,6 +56,9 @@ const Index = () => {
   console.log(pokemonData);
   return (
     <>
+      <div>
+        <ButtonPagination prev={prev} next={next} />
+      </div>
       <div className="m-auto w-full lg:grid lg:grid-cols-3 ">
         {loading ? (
           <h1>Loading...</h1>
