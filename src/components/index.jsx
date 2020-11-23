@@ -1,3 +1,4 @@
+import { data } from "autoprefixer";
 import React, { useEffect, useState } from "react";
 import { getAllPokemon, getPokemon } from "../services/pokemon";
 import ButtonPagination from "./ButtonPagination";
@@ -6,8 +7,9 @@ import LoadingPage from "./LoadPage/LoadingPage";
 
 const Index = () => {
   const [pokemonData, setPokemonData] = useState();
-  const [nextUrl, setNextUrl] = useState();
+  const [nextUrl, setNextUrl] = useState("");
   const [prevUrl, setPrevUrl] = useState("");
+  const [infoPoke, setInfoPoke] = useState([]);
   const [loading, setLoading] = useState(true);
   const urlEndPoint = "https://pokeapi.co/api/v2/pokemon?limit=21";
 
@@ -53,6 +55,8 @@ const Index = () => {
     );
     setPokemonData(_pokemonData);
   };
+
+  console.log(pokemonData);
 
   return (
     <>

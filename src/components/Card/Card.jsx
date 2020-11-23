@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 const Card = ({ pokemon }) => {
   return (
@@ -70,7 +71,13 @@ const Card = ({ pokemon }) => {
               })}
             </div>
             <div className="flex text-white">
-              <button className="px-6 mx-auto py-2 transition ease-in duration-200 rounded-full bg-red-800 hover:bg-yellow-400 hover:text-black border-2 border-gray-400 focus:outline-none">
+              <button
+                onClick={(e) => {
+                  e.preventDefault();
+                  window.location.href = `/pokemon/${pokemon.id}`;
+                }}
+                className="px-6 mx-auto py-2 transition ease-in duration-200 rounded-full bg-red-800 hover:bg-yellow-400 hover:text-black border-2 border-gray-400 focus:outline-none"
+              >
                 Más info
               </button>
             </div>
