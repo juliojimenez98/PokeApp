@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { getAllPokemon, getPokemon } from "../services/pokemon";
 import ButtonPagination from "./ButtonPagination";
 import Card from "./Card/Card";
+import LoadingPage from "./LoadPage/LoadingPage";
 
 const Index = () => {
   const [pokemonData, setPokemonData] = useState();
@@ -53,7 +54,6 @@ const Index = () => {
     setPokemonData(_pokemonData);
   };
 
-  console.log(pokemonData);
   return (
     <>
       <div>
@@ -61,7 +61,7 @@ const Index = () => {
       </div>
       <div className="m-auto w-full lg:grid lg:grid-cols-3 ">
         {loading ? (
-          <h1>Loading...</h1>
+          <LoadingPage />
         ) : (
           <>
             {pokemonData.map((pokemon, i) => {
@@ -69,6 +69,9 @@ const Index = () => {
             })}
           </>
         )}
+      </div>
+      <div>
+        <ButtonPagination prev={prev} next={next} />
       </div>
     </>
   );
