@@ -63,17 +63,21 @@ const Index = () => {
       <div>
         <ButtonPagination prev={prev} next={next} />
       </div>
-      <div className="m-auto w-full lg:grid lg:grid-cols-3 ">
-        {loading ? (
-          <LoadingPage />
-        ) : (
-          <>
+      {loading ? (
+        <div className="flex">
+          <div className="mx-auto">
+            <LoadingPage />
+          </div>
+        </div>
+      ) : (
+        <>
+          <div className="mx-auto w-full lg:grid lg:grid-cols-3 ">
             {pokemonData.map((pokemon, i) => {
               return <Card key={i} pokemon={pokemon} />;
             })}
-          </>
-        )}
-      </div>
+          </div>
+        </>
+      )}
       <div>
         <ButtonPagination prev={prev} next={next} />
       </div>

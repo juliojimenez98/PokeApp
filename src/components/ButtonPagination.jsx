@@ -3,7 +3,7 @@ import React from "react";
 const ButtonPagination = ({ prev, next }) => {
   return (
     <div className="flex">
-      <div className="mx-auto">
+      <div className="mx-auto mt-6">
         <button
           onClick={prev}
           className={
