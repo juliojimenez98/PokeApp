@@ -4,6 +4,7 @@ import { getAllPokemon, getPokemon } from "../services/pokemon";
 import ButtonPagination from "./ButtonPagination";
 import Card from "./Card/Card";
 import LoadingPage from "./LoadPage/LoadingPage";
+import SearchPokemon from "./SearchPokemon/SearchPokemon";
 
 const Index = () => {
   const [pokemonData, setPokemonData] = useState();
@@ -60,6 +61,9 @@ const Index = () => {
 
   return (
     <>
+      <div className="mx-auto">
+        <SearchPokemon />
+      </div>
       <div>
         <ButtonPagination prev={prev} next={next} />
       </div>

@@ -1,4 +1,5 @@
 import React from "react";
+import SearchPokemon from "./components/SearchPokemon/SearchPokemon";
 import Index from "./components";
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
